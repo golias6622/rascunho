@@ -5,7 +5,7 @@
 #define MAX_TABLES 10
 #define MAX_CUSTOMERS_PER_TABLE 4
 
-// Estrutura para armazenar as informa��es de uma reserva
+// Estrutura para armazenar as informações de uma reserva
 struct Reservation {
     char name[50];
     int tableNumber;
@@ -16,10 +16,10 @@ struct Reservation {
 struct Reservation reservations[MAX_TABLES];
 int numberOfReservations = 0;
 
-// Fun�o para exibir o menu
+// Funão para exibir o menu
 void displayMenu() {
     printf("\n===============================\n");
-    printf("Restaurante XYZ - Sistema de Reserva\n");
+    printf("Restaurante da UFERSA - Sistema de Reserva\n");
     printf("===============================\n");
     printf("1. Verificar disponibilidade de mesa\n");
     printf("2. Fazer uma reserva\n");
@@ -29,21 +29,21 @@ void displayMenu() {
     printf("===============================\n");
 }
 
-// Fun��o para verificar se uma mesa esta disponivel
+// Função para verificar se uma mesa esta disponivel
 int checkAvailability(int tableNumber) {
     // Percorre as reservas existentes e verifica se a mesa esta ocupada
     int i;
     for ( i = 0; i < numberOfReservations; i++) {
         if (reservations[i].tableNumber == tableNumber) {
-            return 0; // mesa n�o disponivel
+            return 0; // mesa não disponivel
         }
     }
     return 1; // mesa disponivel
 }
 
-// Função para fazer uma reserva
+// Funcao para fazer uma reserva
 void makeReservation() {
-    // Verifica se há mesas disponíveis
+    // Verifica se há mesas disponÃ­veis
     int tableAvailable = 0;
     int i;
     for ( i = 1; i <= MAX_TABLES; i++) {
@@ -53,19 +53,19 @@ void makeReservation() {
         }
     }
     if (!tableAvailable) {
-        printf("\nDesculpe, não há mesas disponíveis.\n");
+        printf("\nDesculpe, nao ha mesas disponi­veis.\n");
         return;
     }
 
-    // Obtém as informações do cliente
+    // Obtem as informacoes do cliente
     struct Reservation newReservation;
     printf("\nNome do cliente: ");
     scanf("%s", newReservation.name);
-    printf("Número de pessoas: ");
+    printf("Numero de pessoas: ");
     scanf("%d", &newReservation.numberOfCustomers);
 
-    // Verifica as mesas disponíveis e permite que o usuário selecione uma
-    printf("\nMesas disponíveis:\n");
+    // Verifica as mesas disponÃ­veis e permite que o usuÃ¡rio selecione uma
+    printf("\nMesas disponiveis:\n");
     
     for ( i = 1; i <= MAX_TABLES; i++) {
         if (checkAvailability(i)) {
@@ -75,14 +75,14 @@ void makeReservation() {
     printf("Selecione uma mesa: ");
     scanf("%d", &newReservation.tableNumber);
 
-    // Adiciona a reserva à lista de reservas
+    // Adiciona a reserva a lista de reservas
     reservations[numberOfReservations] = newReservation;
     numberOfReservations++;
 
     printf("\nReserva feita com sucesso!\n");
 }
 
-// Função para exibir as reservas
+// Funcao para exibir as reservas
 void displayReservations() {
     printf("\nReservas:\n");
     int i;
@@ -91,16 +91,16 @@ void displayReservations() {
     }
 }
 
-// Função para cancelar uma reserva
+// FunÃ§Ã£o para cancelar uma reserva
 void cancelReservation() {
-    // Exibe as reservas existentes para que o usuário selecione uma para cancelar
+    // Exibe as reservas existentes para que o usuÃ¡rio selecione uma para cancelar
     displayReservations();
     if (numberOfReservations == 0) {
-        printf("\nNão há reservas para cancelar.\n");}
+        printf("\nNao ha reservas para cancelar.\n");}
         
          else {
     int reservationNumber;
-    printf("\nSelecione o número da reserva que deseja cancelar: ");
+    printf("\nSelecione o numero da reserva que deseja cancelar: ");
     scanf("%d", &reservationNumber);
 
     // Remove a reserva selecionada da lista de reservas
@@ -118,7 +118,7 @@ int main() {
 int choice;
 do {
 displayMenu();
-printf("Escolha uma opção: ");
+printf("Escolha uma opcao: ");
 scanf("%d", &choice);
 
 
@@ -126,13 +126,13 @@ scanf("%d", &choice);
     switch (choice) {
         case 1:
             // Verificar disponibilidade de mesa
-            printf("\nNúmero da mesa: ");
+            printf("\nNumero da mesa: ");
             int tableNumber;
             scanf("%d", &tableNumber);
             if (checkAvailability(tableNumber)) {
-                printf("\nMesa %d está disponível.\n", tableNumber);
+                printf("\nMesa %d esta disponÃivel.\n", tableNumber);
             } else {
-                printf("\nMesa %d não está disponível.\n", tableNumber);
+                printf("\nMesa %d nao esta disponi­vel.\n", tableNumber);
             }
             break;
         case 2:
@@ -149,10 +149,10 @@ scanf("%d", &choice);
             break;
         case 5:
             // Sair
-            printf("\nObrigado por usar o Sistema de Reserva do Restaurante XYZ!\n");
+            printf("\nObrigado por usar o Sistema de Reserva do Restaurante da UFERSA!\n");
             break;
         default:
-            printf("\nOpção inválida. Tente novamente.\n");
+            printf("\nOpcaoo invalida. Tente novamente.\n");
             break;
     }
 } while (choice != 5);
